@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 
-def copy_files(from_path, to_path, base_path):
+def copy_files(from_path, to_path):
     if not to_path.exists():
         to_path.mkdir(exist_ok=True)
 
@@ -19,7 +19,7 @@ def copy_files(from_path, to_path, base_path):
                 print(f"Failed to copy file {item}: {e}")
         elif item.is_dir():
             try:
-                copy_files(item, to_path, base_path)
+                copy_files(item, to_path)
             except Exception as e:
                 print(f"Failed to process directory {item}: {e}")
 
@@ -41,7 +41,7 @@ def parse_args():
 
 def main():
     from_path, to_path = parse_args()
-    copy_files(from_path, to_path, to_path)
+    copy_files(from_path, to_path)
 
 
 if __name__ == "__main__":
