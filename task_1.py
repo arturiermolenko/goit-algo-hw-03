@@ -9,7 +9,7 @@ def copy_files(from_path, to_path):
 
     for item in from_path.iterdir():
         if item.is_file():
-            extension = item.suffix[1:] if item.suffix else 'no_extension'
+            extension = item.suffix[1:] if item.suffix else "no_extension"
             ext_dir = to_path / extension
             if not ext_dir.exists():
                 ext_dir.mkdir(exist_ok=True)
@@ -30,7 +30,7 @@ def parse_args():
         sys.exit(1)
 
     from_path = Path(sys.argv[1])
-    to_path = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('dist')
+    to_path = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("dist")
 
     if not from_path.exists() or not from_path.is_dir():
         print(f"The directory {from_path} does not exist or is not a directory.")
